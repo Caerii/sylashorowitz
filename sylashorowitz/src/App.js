@@ -1,64 +1,36 @@
-/**
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
+/*
+  App.js is the root component of the application. It is the parent component that contains all other components.
+  It imports the Header, Bio, and EngineeringPortfolio components and renders them inside a div with the class name "App".
 
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+  The App component also imports the global styles from the App.css file and the logo image from the logo.svg file.
 
-Coded by www.creative-tim.com
+  The App component returns a div with the class name "App" that contains the Header, Bio, and EngineeringPortfolio components.
 
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useEffect } from "react";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Header from './components/Header';
+import Bio from './components/Bio';
+import EngineeringPortfolio from './components/EngineeringPortfolio';
+import Art from './components/Art';
+import Papers from './components/Papers';
+import './styles/App.css';
 
-// react-router components
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-
-// @mui material components
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-
-// Material Kit 2 React themes
-import theme from "assets/theme";
-import Presentation from "layouts/pages/presentation";
-
-// Material Kit 2 React routes
-import routes from "routes";
-
-export default function App() {
-  const { pathname } = useLocation();
-
-  // Setting page scroll to 0 when changing the route
-  useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-  }, [pathname]);
-
-  const getRoutes = (allRoutes) =>
-    allRoutes.map((route) => {
-      if (route.collapse) {
-        return getRoutes(route.collapse);
-      }
-
-      if (route.route) {
-        return <Route exact path={route.route} element={route.component} key={route.key} />;
-      }
-
-      return null;
-    });
-
+function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <Router>
+      <Header />
       <Routes>
-        {getRoutes(routes)}
-        <Route path="/presentation" element={<Presentation />} />
-        <Route path="*" element={<Navigate to="/presentation" />} />
+        <Route path="/" element={<Bio />} /> {/* Default route */}
+        <Route path="/bio" element={<Bio />} />
+        <Route path="/engineering" element={<EngineeringPortfolio />} />
+        <Route path="/art" element={<Art />} />
+        <Route path="/papers" element={<Papers />} />
+        <Route path="*" element={<Navigate to="/" />} /> {/* Redirect unknown routes */}
       </Routes>
-    </ThemeProvider>
+    </Router>
   );
 }
+
+export default App;

@@ -1,0 +1,107 @@
+/* App.css */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('\solarpunk.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* Header styles */
+header {
+  width: 100%;
+  background: #5a3d5c; /* Dark Purple */
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #d4a373; /* Tan */
+  font-weight: bold;
+  padding: 10px 15px;
+  background: #2e604a; /* Deep Green */
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  background: #1e4635;
+}
+
+/* Main app container */
+.App {
+  width: 90%;
+  max-width: 800px;
+  margin-top: 80px; /* Push content below fixed header */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Bio section */
+#bio {
+  background: rgba(225, 216, 195, 0.9); /* Semi-transparent tan */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-left: 6px solid #2e604a; /* Deep Green */
+  max-width: 600px;
+  text-align: center;
+  margin: auto; /* Centering */
+}
+
+#bio h1 {
+  color: #5a3d5c; /* Dark Purple */
+}
+
+#bio p {
+  color: #2e604a; /* Deep Green */
+  font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .App {
+    width: 95%;
+    margin-top: 120px; /* Adjust for smaller header spacing */
+    padding: 15px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  #bio {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
